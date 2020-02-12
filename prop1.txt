@@ -1,0 +1,3 @@
+- delete entire events and repopulate on refresh
+- ticket master integration
+- deletion capability

@@ -1,5 +1,23 @@
 Proposals!
 
-1. Dream Creator
 
-2. Best Friend Finder
+I. Do you keep forgetting when your favorite band is in town? Do you wish you were always free for your favorite musician to visit? Take a gander at our smart music calendar! Using your Spotify Top Artists (or input your favorite artist), location, and calendar, we populate your calendar (free of charge) with a few of your favorite artists events nearby! To do this, we'll be using the Spotify API, Google Calendar API, and the user's current location to minimize effort to create your FOMO-free schedule. Rain or shine? We'll give you our best guess to ensure your concert hair is looking good by integrating our weather API! Enjoy our currently nameless app to be pressured by your calendar to leave your house and party.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+II. Look no further for your dream (vacation) life. After setting up a secure account, in which you answer few questions about yourself, we tell where and when to vacation and what to do! It takes all of the guesswork out of staying at your home away from home. We will utilize the Weather API and Yelp's API. There is additional functionality wherein you give us the location in particular, and we supply the when and the what!
