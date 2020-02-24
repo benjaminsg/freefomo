@@ -1,0 +1,1 @@
+Users could change the website into dark mode, which will change the website into a black or grey scale site.

@@ -1,0 +1,1 @@
+Users will be able to have a parental control button. This will allow adults to turn on parental controls for their children and disallow the import of artists on a “banned” list to be populated into the users’ calendar.
