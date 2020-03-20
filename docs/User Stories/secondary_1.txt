@@ -1,1 +1,0 @@
-Users will be able to customize the calendar. For example, the color change of the overall color of the calendar as well as the color of the events. Users could select their preference colors from a color wheel. 

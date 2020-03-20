@@ -1,1 +1,0 @@
-Users will be able to lookup calendars by artist and populate their Google calendar with that specific artist. For example, if their Top Artists do not include their recent favorite, the user will have the opportunity to add an artist to their calendar in accordance with the aforementioned filtering capability.
