@@ -14,13 +14,20 @@ block content
   //    input(type='text', name='imdb', value='')
   //  input(type='submit', value='Submit')
 
-  form(action='/add_movie', method='POST')
-      p Ticketmaster API
+  form(action='/users', method='GET')
+      p Spotify API
       p
-        | Please enter an artist:
+        | Please enter your artist:
         input(type='text', name='title', value='')
-        input(type='submit', value='Submit')
 
+          // use a select box
+        | Please enter your two-character state abbreviation:
+        input(type='text', name='state', value='')
+        input(type='submit', value = 'Submit')
+
+        // call the Spotify then pipe to Ticketmaster API
+
+  form(action='/rem_movie', method='POST')
       p Google Calendar API
       p Please enter a name, date, and time for an event
       p
@@ -34,4 +41,7 @@ block content
         input(type='text', name='eventTime', value='')
 
 
-  input(type='submit', value='Submit')
+        // we could just have the submit redirect to the page that makes the API call
+            // need a javascript page that's able to take the result from Spotify's API call
+            // parse it and call the Ticketmaster API
+        input(type='submit', value='Submit')
