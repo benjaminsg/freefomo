@@ -14,18 +14,22 @@ block content
   //    input(type='text', name='imdb', value='')
   //  input(type='submit', value='Submit')
 
+
+    // use a select box
+        // Please enter your two-character state abbreviation:
+        //input(type='text', name='state', value='')
+
+
+        // call the Spotify then pipe to Ticketmaster API
+
   form(action='/users', method='GET')
       p Spotify API
       p
         | Please enter your artist:
         input(type='text', name='title', value='')
+        input(type='submit', value='Submit')
 
-          // use a select box
-        | Please enter your two-character state abbreviation:
-        input(type='text', name='state', value='')
-        input(type='submit', value = 'Submit')
 
-        // call the Spotify then pipe to Ticketmaster API
 
   form(action='/rem_movie', method='POST')
       p Google Calendar API
