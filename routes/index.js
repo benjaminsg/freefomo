@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// not in order for gods sake thanks stack overflow
+// manually put in order for gods sake thanks stack overflow
 const usa = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
   "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD",
   "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH",
@@ -10,7 +10,7 @@ const usa = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index',
-      { title: 'Express' ,
+      { title: 'freefomo' ,
         states: usa});
 });
 

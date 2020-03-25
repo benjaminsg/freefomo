@@ -9,7 +9,7 @@ const doTicketmaster = async (url, value) => {
   return returnValue;
 };
 
-/* GET users listing. */
+/* integrates spotify artist & current location w/ ticketmaster API to get events */
 router.get('/', function(req, res, next) {
     console.log(req.query.title);
     doTicketmaster(config.ticketmasterAttractionID, `&keyword=${req.query.title}`)
