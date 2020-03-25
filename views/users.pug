@@ -3,13 +3,17 @@ extends layout
 
 block content
     h1= title
+    // event has been passed in by users.js
     p=events
 
-    html
-        head
-            link(rel='stylesheet', href='css/main.css')
-            block head
-        body
-            block body
-                h1 Home page
-                p welcome
+    // each event in events
+        // print the name, event id, and anything else relevant
+    //
+    //html
+    //    head
+    //        link(rel='stylesheet', href='css/main.css')
+    //        block head
+    //    body
+    //        block body
+    //            h1 Home page
+    //            p welcome
