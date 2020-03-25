@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
             .then (events => {
                 console.log();
                 // render events in json object to be parsed in pug file (see index.js)
-                res.render('layout',
+                res.render('users',
                     {title:'request received accurately!',
                      events: JSON.stringify(events._embedded.events)});
             })
