@@ -1,5 +1,15 @@
 extends layout
 
+
 block content
     h1= title
     p=events
+
+    html
+        head
+            link(rel='stylesheet', href='css/main.css')
+            block head
+        body
+            block body
+                h1 Home page
+                p welcome
