@@ -13,5 +13,8 @@
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.0",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "request": "^2.88.2"
   }
 }

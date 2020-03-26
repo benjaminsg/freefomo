@@ -3,9 +3,15 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const querystring = require('querystring');
+const config = require('../config');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
+const callbackRouter = require('./routes/callback');
+const refreshTokenRouter = require('./routes/refreshToken');
+// const authenticateRouter = require('./routes/authenticate');
 
 const app = express();
 
@@ -19,8 +25,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/login', loginRouter);
+
+app.use('/callback', callbackRouter);
+
+app.use('/refreshToken', refreshTokenRouter);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+// app.use('/authenticate', authenticateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
