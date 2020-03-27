@@ -1,16 +1,21 @@
 extends layout
-
-
 block content
     h1= title
     // event has been passed in by users.js
-    p=events
-
+    .container
+        table.table(border='3')
+            tr
+                th Name
+                th ID
+                th URL
+            each val in events
+                tr
+                    //td #{val}
+                    td #{val.name}
+                    td #{val.id}
+                    td #{val.url}
     // each event in events
         // print the name, event id, and anything else relevant
-
-
-
     //
     //html
     //    head
