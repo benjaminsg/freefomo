@@ -21,14 +21,16 @@ router.get('/', function(req, res) {
 
     // your application requests authorization
     var scope = 'user-read-private user-read-email';
-    res.redirect('https://accounts.spotify.com/authorize?' +
+    var redirectUrl = 'https://accounts.spotify.com/authorize?' +
         querystring.stringify({
             response_type: 'code',
             client_id: config.spotifyClientId,
-            //scope: scope,
+            scope: scope,
             redirect_uri: config.redirectUri,
             state: state
-        }));
+        });
+    console.log(redirectUrl);
+    res.redirect(redirectUrl);
 });
 
 module.exports = router;
