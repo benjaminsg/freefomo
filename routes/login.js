@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
     res.cookie(config.stateKey, state);
 
     // your application requests authorization
-    var scope = 'user-read-private user-read-email';
+    var scope = 'user-read-private user-read-email user-top-read';
     var redirectUrl = 'https://accounts.spotify.com/authorize?' +
         querystring.stringify({
             response_type: 'code',

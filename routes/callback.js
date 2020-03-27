@@ -48,12 +48,38 @@ router.get('/', function(req, res) {
                     console.log(body);
                 });
 
-                // we can also pass the token to the browser to make requests from there
-                res.redirect('/#' +
-                    querystring.stringify({
-                        access_token: access_token,
-                        refresh_token: refresh_token
-                    }));
+
+                    var options = {
+                        url: config.spotifyTopArtistsUrl,
+                        headers: { 'Authorization': 'Bearer ' + access_token },
+                        json: true
+                    }
+
+                    request.get(options, function (error, response, body) {
+                        console.log(body);
+                        res.render('callback',
+                            {title:'request received accurately!',
+                                events: JSON.stringify(body)});
+                    });
+
+                // getTopArtists(config.spotifyTopArtistsUrl,config.spotifyClientId, access_token)
+                //
+                //         .then (topArtists => {
+                //             console.log(topArtists);
+                //             // render events in json object to be parsed in pug file (see index.js)
+                //             res.render('callback',
+                //                 {title:'request received accurately!',
+                //                     events: JSON.stringify(topArtists._embedded.name)});
+                //         })
+                //
+                //         .catch(e => {
+                //             console.log(e);
+                //         });
+
+                // // we can also pass the token to the browser to make requests from there
+                // res.render('callback',
+                //     {title:'request received accurately!',
+                //         events: JSON.stringify(body)});
             } else {
                 res.redirect('/#' +
                     querystring.stringify({
