@@ -10,6 +10,8 @@ const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const callbackRouter = require('./routes/callback');
 const refreshTokenRouter = require('./routes/refreshToken');
+const allowRouter = require('./routes/allow');
+const callbackgoogleRouter = require('./routes/callbackgoogle');
 // const authenticateRouter = require('./routes/authenticate');
 
 const app = express();
@@ -29,6 +31,10 @@ app.use('/login', loginRouter);
 app.use('/callback', callbackRouter);
 
 app.use('/refreshToken', refreshTokenRouter);
+
+app.use('/allow', allowRouter);
+
+app.use('/callbackgoogle', callbackgoogleRouter);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

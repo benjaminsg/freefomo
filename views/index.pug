@@ -28,6 +28,11 @@ block content
       p
         | Please Login to Spotify
       input(type='submit', value='Submit')
+  form(action='/allow', method='GET')
+      p Google Calendar Login
+      p
+        | Please Login to Google Calendar
+      input(type='submit', value='Submit')
 
   form(action='/rem_movie', method='POST')
       p Google Calendar API
