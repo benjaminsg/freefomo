@@ -21,11 +21,23 @@ router.get('/', function(req, res, next) {
             return doTicketmaster(config.ticketmasterEvents,`&attractionId=${ticketmasterID}&${req.query.state}`);
         })
         .then (events => {
-            console.log();
             // render events in json object to be parsed in pug file (see index.js)
+            let data = [];
+            let i;
+            for (i = 0; i < 3; i ++){
+                let event = {
+                    "artistName": req.query.title,
+                    "eventTitle": events._embedded.events[i].name,
+                    "location": events._embedded.events[i]._embedded.venues[0].city.name,
+                    "date": events._embedded.events[i].dates.start.localDate,
+                    "time" : events._embedded.events[i].dates.start.localTime
+                }
+                data.push(event);
+            }
             res.render('users',
-                {title:'request received accurately!',
-                    events: events._embedded.events})
+                {title: req.query.title,
+                 events: data})
+
         })
         .catch(e => {
             console.log(e);
