@@ -12,7 +12,6 @@ const callbackRouter = require('./routes/callback');
 const refreshTokenRouter = require('./routes/refreshToken');
 const allowRouter = require('./routes/allow');
 const callbackgoogleRouter = require('./routes/callbackgoogle');
-// const authenticateRouter = require('./routes/authenticate');
 
 const app = express();
 
@@ -38,7 +37,6 @@ app.use('/callbackgoogle', callbackgoogleRouter);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/authenticate', authenticateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

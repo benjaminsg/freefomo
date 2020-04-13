@@ -11,7 +11,7 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = 'token.json';
+//const TOKEN_PATH = 'token.json';
 
 // // Load client secrets from a local file.
 // fs.readFile('credentials.json', (err, content) => {
@@ -102,9 +102,12 @@ function listEvents(auth) {
 }
 
 router.get('/', function(req, res) {
+    //get state which is inputted username for storage in mongodb
     var stateString = req.query.username;
+    //create redirectUrl from result of request and state URL fragment
     var redirectUrl = authorize(listEvents) + '&state=' + stateString;
     console.log(redirectUrl);
+    //redirect the user's browser to the received redirect URL
     res.redirect(redirectUrl);
 });
 
