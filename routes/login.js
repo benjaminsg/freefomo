@@ -16,7 +16,7 @@ var generateRandomString = function(length) {
 
 /* integrates spotify artist & current location w/ ticketmaster API to get events */
 router.get('/', function(req, res) {
-    var state = generateRandomString(16);
+    var state = req.query.username;//generateRandomString(16);
     res.cookie(config.stateKey, state);
 
     // your application requests authorization

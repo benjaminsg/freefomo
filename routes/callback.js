@@ -4,11 +4,13 @@ const router = express.Router();
 const config = require('../config');
 const querystring = require('querystring');
 const request = require('request');
+const MongoClient = require('mongodb').MongoClient;
 
 /* integrates spotify artist & current location w/ ticketmaster API to get events */
 router.get('/', function(req, res) {
     var code = req.query.code || null;
     var state = req.query.state || null;
+    console.log(state);
     var storedState = req.cookies ? req.cookies[config.stateKey] : null;
 
     if (state === null || state !== storedState) {
@@ -53,10 +55,26 @@ router.get('/', function(req, res) {
                         url: config.spotifyTopArtistsUrl,
                         headers: { 'Authorization': 'Bearer ' + access_token },
                         json: true
-                    }
+                    };
 
                     request.get(options, function (error, response, body) {
                         console.log(body);
+
+                        MongoClient.connect(config.connectionString, {
+                            useUnifiedTopology: true
+                        })
+                            .then(client => {
+                                console.log('Connected to Database');
+                                const db = client.db('user-info');
+                                const tokensCollection = db.collection(state);
+                                tokensCollection.insertOne(body)
+                                    .then(result => {
+                                        //console.log(result)
+                                    })
+                                    .catch(error => console.error(error));
+                            })
+                            .catch(error => console.error(error));
+
                         res.render('callback',
                             {title:'request received accurately!',
                                 events: JSON.stringify(body)});

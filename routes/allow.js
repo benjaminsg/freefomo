@@ -102,7 +102,8 @@ function listEvents(auth) {
 }
 
 router.get('/', function(req, res) {
-    var redirectUrl = authorize(listEvents);
+    var stateString = req.query.username;
+    var redirectUrl = authorize(listEvents) + '&state=' + stateString;
     console.log(redirectUrl);
     res.redirect(redirectUrl);
 });
