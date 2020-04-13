@@ -8,6 +8,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 /* integrates spotify artist & current location w/ ticketmaster API to get events */
 router.get('/', function(req, res) {
+    //get received querystring containing code and state
     var code = req.query.code || null;
     var state = req.query.state || null;
     console.log(state);
@@ -57,17 +58,19 @@ router.get('/', function(req, res) {
                         json: true
                     };
 
+                    //use the received token to make a request to Spotify for the user's top artists
                     request.get(options, function (error, response, body) {
                         console.log(body);
 
+                        //store the received top artists in mongodb under the received state collection (inputted username)
                         MongoClient.connect(config.connectionString, {
                             useUnifiedTopology: true
                         })
                             .then(client => {
                                 console.log('Connected to Database');
                                 const db = client.db('user-info');
-                                const tokensCollection = db.collection(state);
-                                tokensCollection.insertOne(body)
+                                const userInfoCollection = db.collection(state);
+                                userInfoCollection.insertOne(body)
                                     .then(result => {
                                         //console.log(result)
                                     })
@@ -75,6 +78,7 @@ router.get('/', function(req, res) {
                             })
                             .catch(error => console.error(error));
 
+                        //render the resulting JSON on the pug
                         res.render('callback',
                             {title:'request received accurately!',
                                 events: JSON.stringify(body)});

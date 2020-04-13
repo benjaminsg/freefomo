@@ -5,7 +5,7 @@ const config = require('../config');
 const querystring = require('querystring');
 const request = require('request');
 
-/* integrates spotify artist & current location w/ ticketmaster API to get events */
+//use received refresh token to generate new access token
 router.get('/', function(req, res) {
     // requesting access token from refresh token
     var refresh_token = req.query.refresh_token;
