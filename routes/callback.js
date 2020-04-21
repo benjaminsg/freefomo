@@ -70,7 +70,8 @@ router.get('/', function(req, res) {
                                 console.log('Connected to Database');
                                 const db = client.db('user-info');
                                 const userInfoCollection = db.collection(state);
-                                userInfoCollection.insertOne(body)
+                                const topArtists = {type : 'artists', content : body};
+                                userInfoCollection.insertOne(topArtists)
                                     .then(result => {
                                         //console.log(result)
                                     })

@@ -60,14 +60,17 @@ router.get('/', function(req, res) {
                     const db = client.db('user-info');
                     const userInfoCollection = db.collection(user);
 
-                    const hashpwd = {hashedPassword: generateHash(pwd)};
+                    const storeTokens = {type : 'tokens', content: tokens};
+
+                    const hashpwd = {type : 'password',
+                    content: {hashedPassword: generateHash(pwd)}};
 
                     userInfoCollection.insertOne(hashpwd)
                         .then(result => {
                             //console.log(result)
                         })
                         .catch(error => console.error(error));
-                    userInfoCollection.insertOne(tokens)
+                    userInfoCollection.insertOne(storeTokens)
                         .then(result => {
                             //console.log(result)
                         })
