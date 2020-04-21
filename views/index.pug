@@ -32,8 +32,9 @@ block content
   form(action='/allow', method='GET')
       p Google Calendar Login
       p
-        | Please enter a username and login to Google Calendar:
+        | Please enter a username and password and login to Google Calendar:
         input(type='text', name='username', value='')
+        input(type='text', name='password', value='')
       input(type='submit', value='Submit')
 
   form(action='/rem_movie', method='POST')
