@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
 
                 // use the access token to access the Spotify Web API
                 request.get(options, function(error, response, body) {
-                    console.log(body);
+                    //console.log(body);
                 });
 
 
@@ -60,7 +60,17 @@ router.get('/', function(req, res) {
 
                     //use the received token to make a request to Spotify for the user's top artists
                     request.get(options, function (error, response, body) {
-                        console.log(body);
+                        //console.log(body);
+
+                        const receivedArtists = body.items;
+                        const artistList = [];
+
+                        //console.log(receivedArtists);
+
+                        for (let i=0;i<20;i++){
+                            //console.log(receivedArtists[i].name);
+                            artistList[i] = receivedArtists[i].name;
+                        }
 
                         //store the received top artists in mongodb under the received state collection (inputted username)
                         MongoClient.connect(config.connectionString, {
@@ -70,18 +80,28 @@ router.get('/', function(req, res) {
                                 console.log('Connected to Database');
                                 const db = client.db('user-info');
                                 const userInfoCollection = db.collection(state);
-                                userInfoCollection.insertOne(body)
-                                    .then(result => {
-                                        //console.log(result)
-                                    })
-                                    .catch(error => console.error(error));
+                                for (let i=0; i<20; i++) {
+                                    userInfoCollection.find({name: artistList[i]}).count()
+                                        .then(results => {
+                                            //console.log(results);
+                                            if(results == 0){
+                                                userInfoCollection.insertOne({type: 'artist', name: artistList[i]})
+                                                    .then(result =>{
+                                                        //console.log(result)
+                                                    })
+                                                    .catch(error => console.error(error));
+                                                // console.log("artists to add");
+                                                // console.log(artistsToAdd);
+                                            }
+                                        })
+                                        .catch(error => console.error(error));
+                                }
                             })
                             .catch(error => console.error(error));
 
                         //render the resulting JSON on the pug
-                        res.render('callback',
-                            {title:'request received accurately!',
-                                events: JSON.stringify(body)});
+                        res.render('index',
+                            {message: 'top artists synced successfully'});
                     });
 
                 // getTopArtists(config.spotifyTopArtistsUrl,config.spotifyClientId, access_token)

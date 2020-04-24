@@ -103,7 +103,9 @@ function listEvents(auth) {
 
 router.get('/', function(req, res) {
     //get state which is inputted username for storage in mongodb
-    var stateString = req.query.username;
+    var username = req.query.username;
+    var usercreds = { username: username };
+    var stateString = JSON.stringify(usercreds);
     //create redirectUrl from result of request and state URL fragment
     var redirectUrl = authorize(listEvents) + '&state=' + stateString;
     console.log(redirectUrl);

@@ -1,71 +1,59 @@
 extends layout
 
 block content
-  h1 The Prototype
-  //p Welcome to #{title}
+    h1 Welcome!
 
-    // use a select box
-    // Please enter your two-character state abbreviation:
-    //input(type='text', name='state', value='')
-    // call the Spotify then pipe to Ticketmaster API
-
-  form(action='/users', method='GET')
-      p TicketMaster API
-      p
-        | Please enter your artist:
-        input(type='text', name='title', value='')
-      p
-        | Please enter your state:
-        select(name='states', id='')
-          each val in states
-            option=val
-      input(type='submit', value='Submit')
-
-  form(action='/login', method='GET')
-      p Spotify Login
-      p
-        | Please enter a username and login to Spotify:
-        input(type='text', name='username', value='')
-      input(type='submit', value='Submit')
-
-  form(action='/allow', method='GET')
-      p Google Calendar Login
-      p
-        | Please enter a username and login to Google Calendar:
-        input(type='text', name='username', value='')
-      input(type='submit', value='Submit')
-
-  form(action='/rem_movie', method='POST')
-      p Google Calendar API
-      p Please enter a name, date, and time for an event
-      p
-        | Name:
-        input(type='text', name='eventName', value='')
-      p
-        | Date:
-        input(type='text', name='eventDate', value='')
-      p
-        | Time:
-        input(type='text', name='eventTime', value='')
-
-        // we could just have the submit redirect to the page that makes the API call
-        // need a javascript page that's able to take the result from Spotify's API call
-        // parse it and call the Ticketmaster API
+    p=message
+    //p Welcome to #{title}
+      // use a select box
+          // Please enter your two-character state abbreviation:
+          //input(type='text', name='state', value='')
+          // call the Spotify then pipe to Ticketmaster API
+    //form(action='/users', method='GET')
+    //    p Spotify API
+    //    p
+    //      | Please enter your artist:
+    //      input(type='text', name='title', value='')
+    //    p
+    //      | Please enter your state:
+    //      select(name='states', id='')
+    //        each val in states
+    //          option=val
+    //    input(type='submit', value='Submit')
+    //
+    form(action='/loginRen', method='GET')
+        p Login
         input(type='submit', value='Submit')
-  form(action='/callbackgoogle', method='GET')
-      p Login Form
-      div.username
-          input(type="text",name="username", placeholder="username")
-      div.password
-          input(type="text",name="password", placeholder="password")
-      div.checkbox
-          input(type='checkbox' name='agreement' checked)
-          | Remember me
-      button(type="button") login
-      h3 or login with
-      div.social
-          button(type="button") <i class="fa fa-spotify"></i>
-          button(type="button") <i class="fa fa-google-plus"></i>
-      p
-          | not a member
-          a(href="C:\\cs411group1proj\\viewswelcome.pug") Sing Up now
+
+    form(action='/authenticateGoogle', method='GET')
+        p Add Calendar
+        p
+            | Please enter your username:
+            input(type='text', name='username', value='')
+        input(type='submit', value='Get Started')
+
+    form(action='/authenticateSpotify', method='GET')
+        p Sync Top Artists
+        p
+            | Please enter your username:
+            input(type='text', name='username', value='')
+        input(type='submit', value='Sync')
+    //
+    //form(action='/rem_movie', method='POST')
+    //    p Google Calendar API
+    //    p Please enter a name, date, and time for an event
+    //    p
+    //      | Name:
+    //      input(type='text', name='eventName', value='')
+    //    p
+    //      | Date:
+    //      input(type='text', name='eventDate', value='')
+    //    p
+    //      | Time:
+    //      input(type='text', name='eventTime', value='')
+    //
+    //
+    //      // we could just have the submit redirect to the page that makes the API call
+    //          // need a javascript page that's able to take the result from Spotify's API call
+    //          // parse it and call the Ticketmaster API
+    //      input(type='submit', value='Submit')

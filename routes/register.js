@@ -16,10 +16,19 @@ function generateHash(string) {
     return hash;
 }
 
-router.get("/", function(req, res) {
+router.get('/', function(req, res) {
     var user = req.query.username;
     var pwd = req.query.password;
+    var confirmpwd = req.query.confirmPassword;
 
+    if(pwd != confirmpwd){
+        res.render('register', {message: "passwords do not match"});
+    }
+
+    console.log(user);
+    console.log(pwd);
+
+    //connect to mongodb and store the received tokens under username collection
     MongoClient.connect(config.connectionString, {
         useUnifiedTopology: true
     })
@@ -31,22 +40,16 @@ router.get("/", function(req, res) {
             const hashpwd = {type : 'password',
                 content: {hashedPassword: generateHash(pwd)}};
 
-            userInfoCollection.find({type: 'password'}).toArray()
+            userInfoCollection.insertOne(hashpwd)
                 .then(result => {
-                    //console.log(result[0]);
-                    if(generateHash(pwd) == result[0].content.hashedPassword){
-                        console.log("passwords match");
-                        res.render('index', {message: "login successful"})
-                    } else {
-                        console.log("passwords do not match");
-                        res.render('login',
-                            {message: "login unsuccessful"})
-                    }
+                            //console.log(result)
                 })
                 .catch(error => console.error(error));
         })
         .catch(error => console.error(error));
 
+            //render token JSON the pug
+    res.render('login', {message: "account creation successful"});
 });
 
 module.exports = router;

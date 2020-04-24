@@ -1,24 +1,22 @@
-doctype html
+extends layout
 
-html(lang="en")
-    head
-        title Login
-    body
-        #main
-        form(action='/callbackgoogle', method='GET')
-            div.label login
-            div.username
-                input(type="text" placeholder="username")
-            div.password
-                input(type="password" placeholder="password")
-            div.checkbox
-                input(type='checkbox' name='agreement' checked)
-                | Remember me
-            button(type="button") login
-            h3 or login with
-            div.social
-                button(type="button") <i class="fa fa-spotify"></i>
-                button(type="button") <i class="fa fa-google-plus"></i>
-            p
-                | not a member
-                a(href="#") Sing Up now
+block content
+    .main.container
+        .row
+            .col-md-6.col-md-offset-3
+                h1.display-4.m-b-2 Log in
+
+                p=message
+                // login form
+                form(action='/login', method='GET')
+                    div.form-group
+                        label(for='name') Username:
+                        input#name.form-control(type='text', placeholder='username' name='username')
+                    div.form-group
+                        label(for='pw') Password:
+                        input#pw.form-control(type='password', placeholder='password' name='password')
+                    button.btn.btn-primary(type='submit') Log in
+
+                form(action='/registerRen', method='GET')
+                    p Create an account
+                        input(type='submit', value='Sign up')
