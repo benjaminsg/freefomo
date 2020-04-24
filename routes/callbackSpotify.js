@@ -100,9 +100,8 @@ router.get('/', function(req, res) {
                             .catch(error => console.error(error));
 
                         //render the resulting JSON on the pug
-                        res.render('callback',
-                            {title:'request received accurately!',
-                                events: JSON.stringify(body)});
+                        res.render('index',
+                            {message: 'top artists synced successfully'});
                     });
 
                 // getTopArtists(config.spotifyTopArtistsUrl,config.spotifyClientId, access_token)

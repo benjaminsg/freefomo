@@ -7,11 +7,15 @@ const querystring = require('querystring');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authenticateSpotifyRouter = require('./routes/authenticateSpotify');
 const loginRouter = require('./routes/login');
-const callbackRouter = require('./routes/callback');
+const loginRenRouter = require('./routes/loginRen');
+const callbackRouter = require('./routes/callbackSpotify');
 const refreshTokenRouter = require('./routes/refreshToken');
-const allowRouter = require('./routes/allow');
-const callbackgoogleRouter = require('./routes/callbackgoogle');
+const authenticateGoogleRouter = require('./routes/authenticateGoogle');
+const callbackgoogleRouter = require('./routes/callbackGoogle');
+const registerRouter = require('./routes/register');
+const registerRenRouter = require('./routes/registerRen');
 
 const app = express();
 
@@ -27,13 +31,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/login', loginRouter);
 
+app.use('/loginRen', loginRenRouter);
+
 app.use('/callback', callbackRouter);
 
 app.use('/refreshToken', refreshTokenRouter);
 
-app.use('/allow', allowRouter);
+app.use('/authenticateGoogle', authenticateGoogleRouter);
 
 app.use('/callbackgoogle', callbackgoogleRouter);
+
+app.use('/authenticateSpotify', authenticateSpotifyRouter);
+
+app.use('/register', registerRouter);
+
+app.use('/registerRen', registerRenRouter);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
