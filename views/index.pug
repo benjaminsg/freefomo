@@ -5,14 +5,12 @@ block content
   //p Welcome to #{title}
 
     // use a select box
-        // Please enter your two-character state abbreviation:
-        //input(type='text', name='state', value='')
-
-
-        // call the Spotify then pipe to Ticketmaster API
+    // Please enter your two-character state abbreviation:
+    //input(type='text', name='state', value='')
+    // call the Spotify then pipe to Ticketmaster API
 
   form(action='/users', method='GET')
-      p Spotify API
+      p TicketMaster API
       p
         | Please enter your artist:
         input(type='text', name='title', value='')
@@ -29,6 +27,7 @@ block content
         | Please enter a username and login to Spotify:
         input(type='text', name='username', value='')
       input(type='submit', value='Submit')
+
   form(action='/allow', method='GET')
       p Google Calendar Login
       p
@@ -49,8 +48,24 @@ block content
         | Time:
         input(type='text', name='eventTime', value='')
 
-
         // we could just have the submit redirect to the page that makes the API call
-            // need a javascript page that's able to take the result from Spotify's API call
-            // parse it and call the Ticketmaster API
+        // need a javascript page that's able to take the result from Spotify's API call
+        // parse it and call the Ticketmaster API
         input(type='submit', value='Submit')
+  form(action='/callbackgoogle', method='GET')
+      p Login Form
+      div.username
+          input(type="text",name="username", placeholder="username")
+      div.password
+          input(type="text",name="password", placeholder="password")
+      div.checkbox
+          input(type='checkbox' name='agreement' checked)
+          | Remember me
+      button(type="button") login
+      h3 or login with
+      div.social
+          button(type="button") <i class="fa fa-spotify"></i>
+          button(type="button") <i class="fa fa-google-plus"></i>
+      p
+          | not a member
+          a(href="C:\\cs411group1proj\\viewswelcome.pug") Sing Up now

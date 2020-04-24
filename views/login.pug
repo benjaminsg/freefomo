@@ -1,22 +1,24 @@
-extends layout
+doctype html
 
-
-block content
-    h1= title
-    // event has been passed in by users.js
-    p=events
-
-    // each event in events
-        // print the name, event id, and anything else relevant
-
-
-
-    //
-    //html
-    //    head
-    //        link(rel='stylesheet', href='css/main.css')
-    //        block head
-    //    body
-    //        block body
-    //            h1 Home page
-    //            p welcome
+html(lang="en")
+    head
+        title Login
+    body
+        #main
+        form(action='/callbackgoogle', method='GET')
+            div.label login
+            div.username
+                input(type="text" placeholder="username")
+            div.password
+                input(type="password" placeholder="password")
+            div.checkbox
+                input(type='checkbox' name='agreement' checked)
+                | Remember me
+            button(type="button") login
+            h3 or login with
+            div.social
+                button(type="button") <i class="fa fa-spotify"></i>
+                button(type="button") <i class="fa fa-google-plus"></i>
+            p
+                | not a member
+                a(href="#") Sing Up now

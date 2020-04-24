@@ -2,11 +2,13 @@ const express = require('express');
 const fetch = require('node-fetch');
 const router = express.Router();
 const config = require('../config');
+
 const doTicketmaster = async (url, value) => {
     let returnValueRaw = await fetch(url + value);
     let returnValue = await returnValueRaw.json();
     return returnValue;
 };
+
 /* integrates spotify artist & current location w/ ticketmaster API to get events */
 router.get('/', function(req, res, next) {
     console.log(req.query.title);
@@ -37,7 +39,7 @@ router.get('/', function(req, res, next) {
             res.render('users',
                 {title: req.query.title,
                  events: data})
-
+            return data;
         })
         .catch(e => {
             console.log(e);

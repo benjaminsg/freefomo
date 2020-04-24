@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 sign up
+    form(method='POST' action='/callbackgoogle')
+        div.form-group
+            label(for='name') User Name:
+            input#name.form-control(type='text', placeholder='first and last' name='name')
+        div.form-group
+            label(for='pw') Password:
+            input#pw.form-control(type='password' name='password')
+        button.btn.btn-primary(type='submit') Sign up

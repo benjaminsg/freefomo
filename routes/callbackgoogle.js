@@ -15,11 +15,29 @@ const doOAuth = async (oAuth2Client, code) => {
     return tokens;
 }
 
+function generateHash(string) {
+    var hash = 0;
+    if (string.length === 0)
+        return hash;
+    for (let i = 0; i < string.length; i++) {
+        var charCode = string.charCodeAt(i);
+        hash = ((hash << 7) - hash) + charCode;
+        hash = hash & hash;
+    }
+    return hash;
+}
+
 //get and store calendar tokens using querystring code and state
 router.get('/', function(req, res) {
     var code = req.query.code || null;
 
-    var user = req.query.state;
+    var usercreds = JSON.parse(req.query.state) || null;
+
+    var user = usercreds.username;
+    var pwd = usercreds.password;
+
+    console.log(user);
+    console.log(pwd);
 
     //get oAuth client parameters from config file, refer to Slack for latest config
     const oAuth2Client = new google.auth.OAuth2(
@@ -41,18 +59,29 @@ router.get('/', function(req, res) {
                     console.log('Connected to Database');
                     const db = client.db('user-info');
                     const userInfoCollection = db.collection(user);
-                    userInfoCollection.insertOne(tokens)
+
+                    const storeTokens = {type : 'tokens', content: tokens};
+
+                    const hashpwd = {type : 'password',
+                        content: {hashedPassword: generateHash(pwd)}};
+
+                    userInfoCollection.insertOne(hashpwd)
                         .then(result => {
                             //console.log(result)
                         })
                         .catch(error => console.error(error));
-            })
+                    userInfoCollection.insertOne(storeTokens)
+                        .then(result => {
+                            //console.log(result)
+                        })
+                        .catch(error => console.error(error));
+                })
                 .catch(error => console.error(error));
 
             //render token JSON the pug
             res.render('callbackgoogle',
                 {title:'request received accurately!',
-                events: JSON.stringify(tokens)})
+                    events: JSON.stringify(tokens)})
         })
         .catch(e => {
             console.log(e);
