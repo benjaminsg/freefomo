@@ -1,9 +1,198 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url(../images/bg.mov);
+/*main page UIs*/
+.bkimg {
+  background-image: url(../images/freefomo.jpg);
 }
 
-a {
-  color: #00B7FF;
+.state{
+  margin-top:28%;
+  margin-left:34%;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size:20px;
+}
+
+.submit{
+  margin-left:46%;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #7092BE;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.submit:hover {background-color: #4970A3}
+
+.submit:active {
+  background-color: #4970A3;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.login{
+  margin-left:92%;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #7092BE;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.login:hover {background-color: #4970A3}
+
+.login:active {
+  background-color: #4970A3;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*.dropdown {*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*}*/
+
+/*.dropdown-content {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  background-color: #f9f9f9;*/
+/*  min-width: 160px;*/
+/*  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+/*  z-index: 1;*/
+/*}*/
+
+/*.dropdown-content a {*/
+/*  color: black;*/
+/*  padding: 12px 16px;*/
+/*  text-decoration: none;*/
+/*  display: block;*/
+/*}*/
+
+/*.dropdown-content a:hover {background-color: #f1f1f1}*/
+
+/*.dropdown:hover .dropdown-content {*/
+/*  display: block;*/
+/*}*/
+
+/*.dropdown:hover .dropbtn {*/
+/*  background-color: #7092BE;*/
+/*}*/
+
+/* css for login form */
+.bkimglogin{
+  /*background-image: url('../images/freefomo-login.jpg');*/
+  background-image: url('https://w3hubs.com/Login-Form-In-Pug/bg.jpg');
+  padding: 0;
+  margin: 0px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.lable {
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.form{
+  background-color: rgba(60, 89, 107, 0.63);
+  width: 100%;
+  padding: 30px;
+  margin-top: 20px;
+  margin-left:-10%;
+}
+
+.username input,
+.password input {
+  width: 100%;
+  height: 40px;
+  border: 0px;
+  margin: 0px 0px 15px;
+  box-sizing: border-box;
+  padding: 15px 15px;
+}
+
+.button {
+  background: #63cdda;
+  color: #fff;
+  border: 0px;
+  width: 100%;
+  padding: 10px;
+  margin: 0px;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+}
+
+.p {
+  text-align: center;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.a {
+  padding-left: 5px;
+  text-decoration: none;
+  color: #63cdda;
+  text-transform: capitalize;
+}
+
+.a:hover {
+  text-decoration: underline;
+}
+
+/* css for user home page */
+.dropbtn {
+  margin-left:10px;
+  background-color: #7092BE;
+  color: white;
+  padding: 10px 50px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.calendarform{
+  background-color: rgba(60, 89, 107, 0.63);
+  width: 45%;
+  padding: 20px;
+  margin-left: 27%
+}
+
+.spotifyform{
+  background-color: rgba(60, 89, 107, 0.63);
+  width: 45%;
+  padding: 20px;
+  margin-left: 27%
+}
+
+.logout {
+  background-color: rgba(60, 89, 107, 0.63);
+  padding-left: 5px;
+  text-decoration: none;
+  color: #63cdda;
+  text-transform: capitalize;
+  margin-left: 93%;
+}
+
+.logout:hover {
+  text-decoration: underline;
 }

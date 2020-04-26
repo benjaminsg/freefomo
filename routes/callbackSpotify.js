@@ -96,6 +96,11 @@ router.get('/', function(req, res) {
                                         })
                                         .catch(error => console.error(error));
                                 }
+                                // userInfoCollection.find({type: "artist"}).toArray()
+                                //     .then(result => {
+                                //         console.log(results)
+                                //     })
+                                //     .catch(error => console.error(error))
                             })
                             .catch(error => console.error(error));
 

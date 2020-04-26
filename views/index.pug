@@ -1,59 +1,21 @@
 extends layout
 
 block content
-    h1 Welcome!
+    body.bkimg
+        // p=message
+        form(action='/loginRen', method='GET')
+            input(type='submit', value='Login').login
 
-    p=message
-    //p Welcome to #{title}
-      // use a select box
-          // Please enter your two-character state abbreviation:
-          //input(type='text', name='state', value='')
-          // call the Spotify then pipe to Ticketmaster API
-    //form(action='/users', method='GET')
-    //    p Spotify API
-    //    p
-    //      | Please enter your artist:
-    //      input(type='text', name='title', value='')
-    //    p
-    //      | Please enter your state:
-    //      select(name='states', id='')
-    //        each val in states
-    //          option=val
-    //    input(type='submit', value='Submit')
-    //
-    form(action='/loginRen', method='GET')
-        p Login
-        input(type='submit', value='Submit')
-
-    form(action='/authenticateGoogle', method='GET')
-        p Add Calendar
-        p
-            | Please enter your username:
-            input(type='text', name='username', value='')
-        input(type='submit', value='Get Started')
-
-    form(action='/authenticateSpotify', method='GET')
-        p Sync Top Artists
-        p
-            | Please enter your username:
-            input(type='text', name='username', value='')
-        input(type='submit', value='Sync')
-    //
-    //form(action='/rem_movie', method='POST')
-    //    p Google Calendar API
-    //    p Please enter a name, date, and time for an event
-    //    p
-    //      | Name:
-    //      input(type='text', name='eventName', value='')
-    //    p
-    //      | Date:
-    //      input(type='text', name='eventDate', value='')
-    //    p
-    //      | Time:
-    //      input(type='text', name='eventTime', value='')
-    //
-    //
-    //      // we could just have the submit redirect to the page that makes the API call
-    //          // need a javascript page that's able to take the result from Spotify's API call
-    //          // parse it and call the Ticketmaster API
-    //      input(type='submit', value='Submit')
+        //form(action='/authenticateGoogle', method='GET')
+        //    p Add Calendar
+        //    p
+        //        | Please enter your username:
+        //        input(type='text', name='username', value='')
+        //    input(type='submit', value='Get Started')
+        //
+        //form(action='/authenticateSpotify', method='GET')
+        //    p Sync Top Artists
+        //    p
+        //        | Please enter your username:
+        //        input(type='text', name='username', value='')
+        //    input(type='submit', value='Sync')

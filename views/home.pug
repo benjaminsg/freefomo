@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    body.bkimglogin
+        p.p= states
+        //form(action='/users', method='GET').calendarform
+        //    p.state
+        //      | Please select your state:
+        //      select(name='states', id='').dropbtn
+        //        each val in states
+        //          option=val
+        //    input(type='submit', value='GO!').submit
+        form(action='/authenticateGoogle', method='GET').calendarform
+            h1.lable Add Calendar
+                //input(type='text', name='username', value='')
+                div.username
+                    input#name(type='text', placeholder='username' name='username')
+                button(type='submit').button Get Started
+        form(action='/authenticateSpotify', method='GET').spotifyform
+            h1.lable Sync Top Artists
+                div.username
+                    input#name2(type='text', placeholder='username' name='username')
+                button(type='submit').button sync
+
+        a(href="/").logout Log out

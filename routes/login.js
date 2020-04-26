@@ -25,6 +25,7 @@ router.get("/", function(req, res) {
     })
         .then(client => {
             console.log('Connected to Database');
+
             const db = client.db('user-info');
             const userInfoCollection = db.collection(user);
 
@@ -36,12 +37,14 @@ router.get("/", function(req, res) {
                     //console.log(result[0]);
                     if(generateHash(pwd) == result[0].content.hashedPassword){
                         console.log("passwords match");
-                        res.render('index', {message: "login successful"})
+                        res.render('home', {message: "login successful",
+                                            username:user})
                     } else {
                         console.log("passwords do not match");
                         res.render('login',
                             {message: "login unsuccessful"})
                     }
+
                 })
                 .catch(error => console.error(error));
         })

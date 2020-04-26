@@ -4,19 +4,16 @@ block content
     .main.container
         .row
             .col-md-6.col-md-offset-3
-                h1.display-4.m-b-2 Log in
-
-                p=message
-                // login form
-                form(action='/login', method='GET')
-                    div.form-group
-                        label(for='name') Username:
-                        input#name.form-control(type='text', placeholder='username' name='username')
-                    div.form-group
-                        label(for='pw') Password:
-                        input#pw.form-control(type='password', placeholder='password' name='password')
-                    button.btn.btn-primary(type='submit') Log in
-
-                form(action='/registerRen', method='GET')
-                    p Create an account
-                        input(type='submit', value='Sign up')
+                body.bkimglogin
+                    // login form
+                    form(action='/login', method='GET').form
+                        p.p= message
+                        h1.lable Log in
+                        div.username
+                            input#name(type='text', placeholder='username' name='username')
+                        div.password
+                            input#pw(type='password', placeholder='password' name='password')
+                        button(type='submit').button Log in
+                        p.p
+                            | not a member?
+                            a(href="/registerRen").a Sing Up now
