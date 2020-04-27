@@ -29,13 +29,13 @@ router.get("/", function(req, res) {
             const db = client.db('user-info');
             const userInfoCollection = db.collection(user);
 
-            const hashpwd = {type : 'password',
-                content: {hashedPassword: generateHash(pwd)}};
-
             userInfoCollection.find({type: 'password'}).toArray()
                 .then(result => {
-                    //console.log(result[0]);
-                    if(generateHash(pwd) == result[0].content.hashedPassword){
+                    if(result.length == 0){
+                        console.log("user does not exist");
+                        res.render('index',
+                            {message: "user does not exist"})
+                    } else if(generateHash(pwd) == result[0].content.hashedPassword){
                         console.log("passwords match");
                         res.render('home', {message: "login successful",
                                             username:user})
