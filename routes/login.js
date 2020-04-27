@@ -41,7 +41,7 @@ router.get("/", function(req, res) {
                                             username:user})
                     } else {
                         console.log("passwords do not match");
-                        res.render('login',
+                        res.render('index',
                             {message: "login unsuccessful"})
                     }
 
