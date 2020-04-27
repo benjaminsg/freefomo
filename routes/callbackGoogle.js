@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
     var user = usercreds.username;
     // var pwd = usercreds.password;
 
-    console.log(user);
+    // console.log(user);
     // console.log(pwd);
 
     //get oAuth client parameters from config file, refer to Slack for latest config

@@ -5,7 +5,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/home', function(req, res, next) {
-    res.render('home');
+    res.render('home', {username: req.username});
 });
 
 module.exports = router;

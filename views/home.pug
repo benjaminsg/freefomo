@@ -21,15 +21,17 @@ block content
                     p.p= messageGoogle
                     h1.label Add Calendar
                         //input(type='text', name='username', value='')
-                        div.username
-                            input#name(type='text', placeholder='username' name='username')
+                        //div.username
+                        //    input#name(type='text', placeholder='username' name='username')
+                        input.form-control(type='hidden', name='username', value=username)
                         button(type='submit').button Get Started
             div.grid-item
                 form(action='/authenticateSpotify', method='GET')
                     p.p= messageSpotify
                     h1.label Sync Top Artists
-                        div.username
-                            input#name2(type='text', placeholder='username' name='username')
+                        //div.username
+                        //    input#name2(type='text', placeholder='username' name='username')
+                        input.form-control(type='hidden', name='username', value=username)
                         button(type='submit').button sync
 
         a(href="/").logout Log out
