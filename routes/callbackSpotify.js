@@ -106,7 +106,7 @@ router.get('/', function(req, res) {
                         //render the resulting JSON on the pug
                         res.render('home',
                             {messageSpotify: 'top artists synced successfully',
-                             username: user});
+                             username: state});
                     });
 
                 // getTopArtists(config.spotifyTopArtistsUrl,config.spotifyClientId, access_token)
