@@ -10,7 +10,7 @@ const usersRouter = require('./routes/users');
 const authenticateSpotifyRouter = require('./routes/authenticateSpotify');
 const loginRouter = require('./routes/login');
 const loginRenRouter = require('./routes/loginRen');
-const callbackRouter = require('./routes/callbackSpotify');
+const callbackSpotifyRouter = require('./routes/callbackSpotify');
 const refreshTokenRouter = require('./routes/refreshToken');
 const authenticateGoogleRouter = require('./routes/authenticateGoogle');
 const callbackgoogleRouter = require('./routes/callbackGoogle');
@@ -33,7 +33,7 @@ app.use('/login', loginRouter);
 
 app.use('/loginRen', loginRenRouter);
 
-app.use('/callback', callbackRouter);
+app.use('/callbackSpotify', callbackSpotifyRouter);
 
 app.use('/refreshToken', refreshTokenRouter);
 
