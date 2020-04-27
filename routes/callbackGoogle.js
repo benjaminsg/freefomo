@@ -79,9 +79,9 @@ router.get('/', function(req, res) {
                 .catch(error => console.error(error));
 
             //render token JSON the pug
-            res.render('callbackgoogle',
-                {title:'Calendar tokens received',
-                    events: 'Adding artists to the calendar goes here'})
+            res.render('home',
+                {messageGoogle:'Calendar tokens received',
+                 username: user})
         })
         .catch(e => {
             console.log(e);

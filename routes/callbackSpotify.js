@@ -96,17 +96,17 @@ router.get('/', function(req, res) {
                                         })
                                         .catch(error => console.error(error));
                                 }
-                                // userInfoCollection.find({type: "artist"}).toArray()
-                                //     .then(result => {
-                                //         console.log(results)
-                                //     })
-                                //     .catch(error => console.error(error))
+                                for (let i=0; i < 3; i++) {
+                                    let artist = userInfoCollection.find({name: artistList[i]}).toString();
+                                    res.render('users',{artistName: artist});
+                                }
                             })
                             .catch(error => console.error(error));
 
                         //render the resulting JSON on the pug
-                        res.render('index',
-                            {message: 'top artists synced successfully'});
+                        res.render('home',
+                            {messageSpotify: 'top artists synced successfully',
+                             username: user});
                     });
 
                 // getTopArtists(config.spotifyTopArtistsUrl,config.spotifyClientId, access_token)

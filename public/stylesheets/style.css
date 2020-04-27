@@ -1,6 +1,8 @@
 /*main page UIs*/
 .bkimg {
-  background-image: url(../images/freefomo.jpg);
+  background-image: url('https://w3hubs.com/Login-Form-In-Pug/bg.jpg');
+  padding: 0;
+  margin: 0px;
 }
 
 .state{
@@ -90,12 +92,6 @@
 /*}*/
 
 /* css for login form */
-.bkimglogin{
-  /*background-image: url('../images/freefomo-login.jpg');*/
-  background-image: url('https://w3hubs.com/Login-Form-In-Pug/bg.jpg');
-  padding: 0;
-  margin: 0px;
-}
 
 .main {
   display: flex;
@@ -104,13 +100,20 @@
   height: 100vh;
 }
 
-.lable {
+.label {
   font-size: 40px;
   text-align: center;
   color: #fff;
   padding-bottom: 15px;
   text-transform: capitalize;
 }
+
+.loginform{
+  background-color: rgba(60, 89, 107, 0.63);
+  width: 100%;
+  padding: 30px;
+}
+
 
 .form{
   background-color: rgba(60, 89, 107, 0.63);
@@ -134,7 +137,7 @@
   background: #63cdda;
   color: #fff;
   border: 0px;
-  width: 100%;
+  width: 45%;
   padding: 10px;
   margin: 0px;
   font-size: 24px;
@@ -195,4 +198,58 @@
 
 .logout:hover {
   text-decoration: underline;
+}
+
+/* homepage grids */
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  width:98%;
+  /*margin-top:5%;*/
+}
+
+.grid-item {
+  background-color: rgba(60, 89, 107, 0.63);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-index {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-user{
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.user{
+  /*background-color: rgba(60, 89, 107, 0.63);*/
+  float: left;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 40px;
+  width: 50%;
+  margin-left:1%
+}
+
+.populate {
+  background: #63cdda;
+  float: right;
+  margin-top: 2.6%;
+  margin-right: 1%;
+  /*width:50%;*/
+  color: #fff;
+  border: 0px;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
 }

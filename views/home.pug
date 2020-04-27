@@ -1,25 +1,35 @@
 extends layout
 
 block content
-    body.bkimglogin
-        p.p= states
-        //form(action='/users', method='GET').calendarform
-        //    p.state
-        //      | Please select your state:
-        //      select(name='states', id='').dropbtn
-        //        each val in states
-        //          option=val
-        //    input(type='submit', value='GO!').submit
-        form(action='/authenticateGoogle', method='GET').calendarform
-            h1.lable Add Calendar
-                //input(type='text', name='username', value='')
-                div.username
-                    input#name(type='text', placeholder='username' name='username')
-                button(type='submit').button Get Started
-        form(action='/authenticateSpotify', method='GET').spotifyform
-            h1.lable Sync Top Artists
-                div.username
-                    input#name2(type='text', placeholder='username' name='username')
-                button(type='submit').button sync
+    body.bkimg
+        - const states = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH","NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"];
+        p.user= "welcome! " + username
+        form(action='/flow', method='GET')
+            button(type='submit').populate populate calendar
+
+        div.grid-container
+            div.grid-item
+                form(action='/users', method='GET')
+                    p.p
+                      h1.label Please select your state:
+                      select(name='states', id='').dropbtn
+                        each val in states
+                          option=val
+                    input(type='submit', value='GO!').button
+            div.grid-item
+                form(action='/authenticateGoogle', method='GET')
+                    p.p= messageGoogle
+                    h1.label Add Calendar
+                        //input(type='text', name='username', value='')
+                        div.username
+                            input#name(type='text', placeholder='username' name='username')
+                        button(type='submit').button Get Started
+            div.grid-item
+                form(action='/authenticateSpotify', method='GET')
+                    p.p= messageSpotify
+                    h1.label Sync Top Artists
+                        div.username
+                            input#name2(type='text', placeholder='username' name='username')
+                        button(type='submit').button sync
 
         a(href="/").logout Log out

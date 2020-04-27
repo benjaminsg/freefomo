@@ -1,21 +1,34 @@
 extends layout
 
 block content
-    body.bkimg
-        // p=message
-        form(action='/loginRen', method='GET')
-            input(type='submit', value='Login').login
+    .main.container
+        body.bkimg
+            div.grid-container
+                div.grid-index
+                    img(src='http://a1.qpic.cn/psc?/V10X742l4I7dk9/8QV3e.xOxaOcAjy1WH0k.vu*T6u1uZjlVck*tNud1ia*v.zabG*SYfXzUCFYT1.jGp0AHdpwGkZv*HZrA57HYg!!/b&ek=1&kp=1&pt=0&bo=VwLMAQAAAAADF6o!&tl=1&vuin=1035607998&tm=1587956400&sce=60-2-2&rf=viewer_4' style='width:600px; height:500px;')
+                div.grid-index
+                    form(action='/login', method='GET').form
+                        //p.p= message
+                        h1.label Log in
+                        div.username
+                            input#name(type='text', placeholder='username' name='username')
+                        div.password
+                            input#pw(type='password', placeholder='password' name='password')
+                        button(type='submit').button Log in
+                        p.p
+                            | not a member?
+                            a(href="/registerRen").a Sign Up now
 
-        //form(action='/authenticateGoogle', method='GET')
-        //    p Add Calendar
-        //    p
-        //        | Please enter your username:
-        //        input(type='text', name='username', value='')
-        //    input(type='submit', value='Get Started')
-        //
-        //form(action='/authenticateSpotify', method='GET')
-        //    p Sync Top Artists
-        //    p
-        //        | Please enter your username:
-        //        input(type='text', name='username', value='')
-        //    input(type='submit', value='Sync')
+            //form(action='/authenticateGoogle', method='GET')
+            //    p Add Calendar
+            //    p
+            //        | Please enter your username:
+            //        input(type='text', name='username', value='')
+            //    input(type='submit', value='Get Started')
+            //
+            //form(action='/authenticateSpotify', method='GET')
+            //    p Sync Top Artists
+            //    p
+            //        | Please enter your username:
+            //        input(type='text', name='username', value='')
+            //    input(type='submit', value='Sync')
