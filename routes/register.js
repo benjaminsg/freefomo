@@ -49,7 +49,7 @@ router.get('/', function(req, res) {
         .catch(error => console.error(error));
 
             //render token JSON the pug
-    res.render('login', {message: "account creation successful"});
+    res.render('index', {message: "account creation successful"});
 });
 
 module.exports = router;
