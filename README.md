@@ -1,4 +1,3 @@
-# Prototype
+# FreeFomo
 
-Looking to do our prototype as a Node app because 400 is doing that and some people know javascript right now. 
-Using a pug template right now because I don't know how to stand up a beautiful front end.
+An app that uses the Spotify, Ticketmaster, and Google Calendar APIs to peer pressure you into having fun with your favorite artists.
