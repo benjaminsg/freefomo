@@ -16,9 +16,9 @@ function generateHash(string) {
     return hash;
 }
 
-router.get("/", function(req, res) {
-    var user = req.query.username || null;
-    var pwd = req.query.password || null;
+router.post("/", function(req, res) {
+    var user = req.body.username || null;
+    var pwd = req.body.password || null;
 
     MongoClient.connect(config.connectionString, {
         useUnifiedTopology: true
