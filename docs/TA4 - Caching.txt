@@ -1,0 +1,1 @@
+In this project we cache the retrieved Top Artists so we can filter out top artists that have already been synced and only add new ones to the database during each sync. 
