@@ -1,0 +1,150 @@
+{
+    "$schema": "freefomo_user-info_schema.json",
+    "$id": "freefomo_user-info.json",
+    "type": "object",
+    "title": "The user-info Schema",
+    "description": "The user-info schema comprises the entire JSON document for a given user.",
+    "default": {},
+    "additionalProperties": true,
+    "required": [
+        "_id",
+        "type"
+    ],
+    "properties": {
+        "_id": {
+            "$id": "#/properties/_id",
+            "type": "object",
+            "title": "The _id Schema",
+            "description": "The container for the unique id string assigned to each document, and the schema key",
+            "default": {},
+            "examples": [
+                {
+                    "$oid": "5ea734268ef870b9369cd3ec"
+                }
+            ],
+            "additionalProperties": true,
+            "required": [
+                "$oid"
+            ],
+            "properties": {
+                "$oid": {
+                    "$id": "#/properties/_id/properties/$oid",
+                    "type": "string",
+                    "title": "The $oid Schema",
+                    "description": "The unique id string assigned to each document",
+                    "default": "",
+                    "examples": [
+                        "5ea734268ef870b9369cd3ec"
+                    ]
+                }
+            }
+        },
+        "type": {
+            "$id": "#/properties/type",
+            "type": "string",
+            "title": "The type Schema",
+            "description": "A string giving which type of information the document contains, either 'password', 'tokens', or 'artist'",
+            "default": "",
+            "examples": [
+                "tokens"
+            ]
+        },
+        "content": {
+            "$id": "#/properties/content",
+            "type": "object",
+            "title": "The content Schema",
+            "description": "The container for the content of the document, with different fields depending on type (absent from type artist)",
+            "default": {},
+            "examples": [
+                {
+                    "scope": "https://www.googleapis.com/auth/calendar",
+                    "token_type": "Bearer",
+                    "expiry_date": 1588019367244.0,
+                    "access_token": "ya29.a0Ae4lvC1U2K9X6y8kwP1edZeNj6Y_MuEiFPQ91p7zUkgWq11n66aAQpdKextIDpceF7Qdr90IPJki855Rf8_FI5ILhmQSLq1GZ87UjQH8qkjm8bOx7OfIqEVakHqe7H6jkjI6ECsLf3lI5FgoUnZWk3fH_4qGguyQsBM",
+                    "refresh_token": "1//0djy-SB3NuTePCgYIARAAGA0SNwF-L9Ir84SlvNpnl1i0ZJDexDqOnJw2gGh9cmJuyNs-csENXJdimPG5ojxN8ITk1fc78LFRfvM"
+                },
+		{
+		    "hashedPassword": -1597926861
+		}
+            ],
+            "additionalProperties": true,
+            "required": [],
+            "properties": {
+                "access_token": {
+                    "$id": "#/properties/content/properties/access_token",
+                    "type": "string",
+                    "title": "The access_token Schema",
+                    "description": "The Google Calendar access token (only used for type tokens)",
+                    "default": "",
+                    "examples": [
+                        "ya29.a0Ae4lvC1P2K9X6y8kwP1edZeNj6Y_MuEiFPQ91p7zUkgWq11n66aAQpdKextIDpceF7Qdr90IPJki855Rf8_FI5ILhmQSLq1GY87UjQH8qkjm8bOx7OfIqEVakHqe7H6jkjI6ECsLf3lI5FgoUnZWk3fH_4qGguyQsBM"
+                    ]
+                },
+                "refresh_token": {
+                    "$id": "#/properties/content/properties/refresh_token",
+                    "type": "string",
+                    "title": "The refresh_token Schema",
+                    "description": "The Google Calendar refresh token (only used for type tokens)",
+                    "default": "",
+                    "examples": [
+                        "1//0djy-SB3NuSePCgYIARABGA0SNwF-L9Ir84SlvNpnl1i0ZJDexDqOnJw2gGh9cmJuyNs-csENXJdimPG5ojxN8ITk1fc78LFRfvM"
+                    ]
+                },
+                "scope": {
+                    "$id": "#/properties/content/properties/scope",
+                    "type": "string",
+                    "title": "The scope Schema",
+                    "description": "The Google APIs scope (only used for type tokens)",
+                    "default": "",
+                    "examples": [
+                        "https://www.googleapis.com/auth/calendar"
+                    ]
+                },
+                "token_type": {
+                    "$id": "#/properties/content/properties/token_type",
+                    "type": "string",
+                    "title": "The token_type Schema",
+                    "description": "The type of token contained (only used for type tokens)",
+                    "default": "",
+                    "examples": [
+                        "Bearer"
+                    ]
+                },
+                "expiry_date": {
+                    "$id": "#/properties/content/properties/expiry_date",
+                    "type": "integer",
+                    "title": "The expiry_date Schema",
+                    "description": "An int representing when the token will expire (only used for type tokens)",
+                    "default": 0,
+                    "examples": [
+                        1588018767244.0
+                    ]
+                }
+		"hashedPassword": {
+                    "$id": "#/properties/content/properties/hashedPassword",
+                    "type": "integer",
+                    "title": "The hashedPassword Schema",
+                    "description": "The user's password hashed to an int (only used for type password)",
+                    "default": 0,
+                    "examples": [
+                        -1597926861,
+			-2006653808,
+			-12841227
+                    ]
+                }
+            }
+        }
+	"name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "The name Schema",
+            "description": "The name of the artist (only used for type artist)",
+            "default": "",
+            "examples": [
+                "LCD Soundsystem",
+		"Tame Impala",
+		"Gorillaz"
+            ]
+        }
+    }
+}
