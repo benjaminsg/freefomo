@@ -21,35 +21,41 @@ router.get('/', function(req, res) {
     var pwd = req.query.password;
     var confirmpwd = req.query.confirmPassword;
 
+
     if(pwd != confirmpwd){
         res.render('register', {message: "passwords do not match"});
-    }
+    } else if (user.length == 0) {
+        res.render('register', {message: "username cannot be empty"});
+    } else {
 
-    console.log(user);
-    console.log(pwd);
+        console.log(user);
+        console.log(pwd);
 
-    //connect to mongodb and store the received tokens under username collection
-    MongoClient.connect(config.connectionString, {
-        useUnifiedTopology: true
-    })
-        .then(client => {
-            console.log('Connected to Database');
-            const db = client.db('user-info');
-            const userInfoCollection = db.collection(user);
-
-            const hashpwd = {type : 'password',
-                content: {hashedPassword: generateHash(pwd)}};
-
-            userInfoCollection.insertOne(hashpwd)
-                .then(result => {
-                            //console.log(result)
-                })
-                .catch(error => console.error(error));
+        //connect to mongodb and store the received tokens under username collection
+        MongoClient.connect(config.connectionString, {
+            useUnifiedTopology: true
         })
-        .catch(error => console.error(error));
+            .then(client => {
+                console.log('Connected to Database');
+                const db = client.db('user-info');
+                const userInfoCollection = db.collection(user);
 
-            //render token JSON the pug
-    res.render('index', {message: "account creation successful"});
+                const hashpwd = {
+                    type: 'password',
+                    content: {hashedPassword: generateHash(pwd)}
+                };
+
+                userInfoCollection.insertOne(hashpwd)
+                    .then(result => {
+                        //console.log(result)
+                    })
+                    .catch(error => console.error(error));
+            })
+            .catch(error => console.error(error));
+
+        //render token JSON the pug
+        res.render('index', {message: "account creation successful"});
+    }
 });
 
 module.exports = router;
