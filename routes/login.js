@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 function generateHash(string) {
     var hash = 0;
-    if (string.length === 0)
+    if (string === null || string.length === 0)
         return hash;
     for (let i = 0; i < string.length; i++) {
         var charCode = string.charCodeAt(i);
@@ -27,6 +27,11 @@ router.post("/", function(req, res) {
             console.log('Connected to Database');
 
             const db = client.db('user-info');
+            if (user == null) {
+                console.log("user does not exist");
+                res.render('index',
+                    {message: "user does not exist"})
+            }
             const userInfoCollection = db.collection(user);
 
             userInfoCollection.find({type: 'password'}).toArray()
@@ -39,7 +44,7 @@ router.post("/", function(req, res) {
                         console.log("passwords match");
                         res.render('home', {message: "login successful",
                                             username:user})
-                    } else {
+                    } else if (generateHash(pwd) != result[0].content.hashedPassword){
                         console.log("passwords do not match");
                         res.render('index',
                             {message: "login unsuccessful"})
@@ -49,9 +54,7 @@ router.post("/", function(req, res) {
                 .catch(error => console.error(error));
         })
         .catch(error =>
-            console.error(error),
-            res.render('index',
-            {message: "login unsuccessful"})
+            console.error(error)
         );
 
 });
