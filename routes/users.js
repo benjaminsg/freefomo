@@ -76,11 +76,12 @@ router.get('/', async function(req, res, next) {
                                                                 "date": events._embedded.events[j].dates.start.localDate,
                                                                 "time": events._embedded.events[j].dates.start.localTime
                                                             };
-                                                            userInfoCollection.find({type: event, content: {artistName: event.artistName, location: event.location, date: event.date}}).count()
+                                                            userInfoCollection.find({type: 'event', artistName: event.artistName, location: event.location, date: event.date}).count()
                                                                 .then(results => {
                                                                     //console.log(results);
                                                                     if(results == 0){
-                                                                        userInfoCollection.insertOne({type: 'event', content: event})
+                                                                        event.type = 'event';
+                                                                        userInfoCollection.insertOne(event)
                                                                             .then(result =>{
                                                                                 //console.log(result)
                                                                             })
@@ -108,10 +109,10 @@ router.get('/', async function(req, res, next) {
                                 if(err) {
                                     console.error(err);
                                 }
-                                res.render('users',
+                                res.render('home',
                                     {
-                                        title: 'title',
-                                        events: data
+                                        messageUsers: 'events added',
+                                        username: user
                                     });
                             });
                         }

@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const querystring = require('querystring');
 
+const flowRouter = require('./routes/flow');
 const flow1Router = require('./routes/flow1');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -17,6 +18,8 @@ const authenticateGoogleRouter = require('./routes/authenticateGoogle');
 const callbackgoogleRouter = require('./routes/callbackGoogle');
 const registerRouter = require('./routes/register');
 const registerRenRouter = require('./routes/registerRen');
+const checkEventsRouter = require('./routes/checkEvents');
+const returnRenRouter = require('./routes/returnRen');
 
 const app = express();
 
@@ -51,6 +54,12 @@ app.use('/registerRen', registerRenRouter);
 app.use('/users', usersRouter);
 
 app.use('/flow1', flow1Router);
+
+app.use('/flow', flowRouter);
+
+app.use('/checkEvents', checkEventsRouter);
+
+app.use('/returnRen', returnRenRouter);
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);

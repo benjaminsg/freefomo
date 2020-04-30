@@ -4,13 +4,14 @@ block content
     body.bkimg
         - const states = ["AL", "AK", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH","NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WI", "WV", "WY"];
         p.user= "welcome! " + username
-        form(action='/flow', method='GET')
+        form(action='/checkEvents', method='GET')
+            input.form-control(type='hidden', name='username', value=username)
             button(type='submit').populate populate calendar
 
         div.grid-container
             div.grid-item
                 form(action='/users', method='GET')
-                    p.p
+                    p.p= messageUsers
                       h1.label Please select your state:
                       select(name='state', id='').dropbtn
                         each val in states
