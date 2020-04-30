@@ -12,9 +12,10 @@ block content
                 form(action='/users', method='GET')
                     p.p
                       h1.label Please select your state:
-                      select(name='states', id='').dropbtn
+                      select(name='state', id='').dropbtn
                         each val in states
                           option=val
+                    input.form-control(type='hidden', name='username', value=username)
                     input(type='submit', value='GO!').button
             div.grid-item
                 form(action='/authenticateGoogle', method='GET')

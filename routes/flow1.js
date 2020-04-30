@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   const MongoClient = require('mongodb').MongoClient;
 
   const url = config.connectionString;
-  const user = config.user
+  const user = req.query.username;
 
   const doTicketmaster = async (url, value) => {
     let returnValueRaw = await fetch(url + value);
@@ -41,21 +41,27 @@ router.get('/', function(req, res, next) {
                 doTicketmaster(config.ticketmasterAttractionID, `&keyword=${spotifyArtists[0]}`)
                     // save the attractionID for artist 1
                     .then(ticketmasterJSON => {
-                      artistIDs[0] = ticketmasterJSON._embedded.attractions[0].id;
+                        if(ticketmasterJSON != null && ticketmasterJSON._embedded != null) {
+                            artistIDs[0] = ticketmasterJSON._embedded.attractions[0].id;
+                        }
                     });
 
                 // get attractionID for artist 2
                 doTicketmaster(config.ticketmasterAttractionID, `&keyword=${spotifyArtists[1]}`)
                     // save the attractionID for artist2
                     .then(ticketmasterJSON => {
-                      artistIDs[1] = ticketmasterJSON._embedded.attractions[0].id;
+                        if(ticketmasterJSON != null && ticketmasterJSON._embedded != null) {
+                            artistIDs[1] = ticketmasterJSON._embedded.attractions[0].id;
+                        }
                     });
 
                 // get attractionID for artist 3
                 doTicketmaster(config.ticketmasterAttractionID, `&keyword=${spotifyArtists[2]}`)
                     // save the attractionID for artist3
                     .then(ticketmasterJSON => {
-                      artistIDs[2] = ticketmasterJSON._embedded.attractions[0].id;
+                        if(ticketmasterJSON != null && ticketmasterJSON._embedded != null) {
+                            artistIDs[2] = ticketmasterJSON._embedded.attractions[0].id;
+                        }
 
                       /* the return statement may have to be here, i'm not sure */
                     });
@@ -83,6 +89,7 @@ router.get('/', function(req, res, next) {
                         events[2] = res;
                         /* the return statement may have to be here, i'm not sure */
                       });
+                  console.log(events);
                   return events;
                 })
 
@@ -91,3 +98,4 @@ router.get('/', function(req, res, next) {
         console.log(e);// catch error
       })
 });
+module.exports = router;
